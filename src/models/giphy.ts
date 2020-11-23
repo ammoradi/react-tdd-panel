@@ -50,3 +50,23 @@ export interface IGifObjectModel {
   images: IGifImagesModel
   title: string
 }
+
+export interface IGiphyPaginationModel {
+  total_count: number
+  count: number
+  offset: number
+}
+
+export interface IGiphyMetaModel {
+  status: number
+  msg: string
+  response_id: string
+}
+
+export interface IGiphyResultModel {
+  data: any[]
+}
+
+export interface IGiphySearchResultModel {
+  data: IGifObjectModel[]
+}

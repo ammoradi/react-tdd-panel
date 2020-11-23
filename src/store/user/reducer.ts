@@ -1,8 +1,4 @@
-import {
-  CLEAR_USER,
-  IUserState,
-  TUserActions
-} from './types'
+import { CLEAR_USER, IUserState, TUserActions } from './types'
 
 const initialState: IUserState = {
   token: ''

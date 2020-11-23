@@ -32,7 +32,7 @@
       "@typescript-eslint/semi": 0,
       "indent": ["error", 2, { "SwitchCase": 1 }],
       "react/jsx-indent": ["error", 2],
-      "max-len": [2, 100, 2],
+      "max-len": [2, 120, 2],
       "comma-dangle": ["error", "never"],
       "react/prop-types": "off",
       "react/jsx-filename-extension": [

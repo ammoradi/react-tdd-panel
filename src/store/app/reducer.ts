@@ -1,8 +1,4 @@
-import {
-  IAppState,
-  TAppActions,
-  CLEAR_APP
-} from './types'
+import { IAppState, TAppActions, CLEAR_APP } from './types'
 
 const initialState: IAppState = {}
 

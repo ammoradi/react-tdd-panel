@@ -1,8 +1,6 @@
 import { Dispatch } from 'redux'
 
-import {
-  clearUser
-} from './actions'
+import { clearUser } from './actions'
 
 export const logoutAction = (): any => (dispatch: Dispatch) =>
   new Promise(async (resolve) => {
