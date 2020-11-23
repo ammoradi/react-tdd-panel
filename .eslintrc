@@ -1,0 +1,66 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": ["src"],
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        },
+        "typescript": {
+          "alwaysTryTypes": true
+        }
+      }
+    },
+    "extends": [
+      "react-app",
+      "airbnb",
+      "airbnb-typescript",
+      "plugin:jsx-a11y/recommended",
+      "prettier",
+      "prettier/react"
+    ],
+    "plugins": [
+      "@typescript-eslint/eslint-plugin",
+      "jsx-a11y",
+      "prettier"
+    ],
+    "rules": {
+      "semi": 0,
+      "@typescript-eslint/semi": 0,
+      "indent": ["error", 2, { "SwitchCase": 1 }],
+      "react/jsx-indent": ["error", 2],
+      "max-len": [2, 100, 2],
+      "comma-dangle": ["error", "never"],
+      "react/prop-types": "off",
+      "react/jsx-filename-extension": [
+        1,
+        { "extensions": [".tsx"] }
+      ],
+      "react/jsx-props-no-spreading" : "off",
+      "react/no-array-index-key": "off",
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+      "import/prefer-default-export": "off",
+      "prefer-promise-reject-errors": "off",
+      "no-async-promise-executor": "off",
+      "jsx-a11y/media-has-caption": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "react/jsx-fragments": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "semi": false,
+          "no-tabs": true,
+          "singleQuote": true,
+          "trailingComma": "none",
+          "printWidth": 86,
+          "endOfLine":"auto"
+        }
+      ]
+    }
+  }
