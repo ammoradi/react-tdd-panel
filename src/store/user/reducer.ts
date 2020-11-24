@@ -6,6 +6,7 @@ import {
   ADD_USER,
   EDIT_USER,
   DELETE_USER,
+  LOG_IN,
   LOG_OUT,
   IUserState,
   TUserActions
@@ -55,6 +56,9 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
       newUsers.splice(desiredUserIndex, 1)
       return { ...state, users: newUsers }
     }
+
+    case LOG_IN:
+      return { ...state, id: action.payload || 0 }
 
     case LOG_OUT:
       return initialState

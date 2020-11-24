@@ -20,3 +20,8 @@ export interface IAddUserModel {
   info?: string
   avatar?: string
 }
+
+export interface IUserLoginModel {
+  username: string
+  password: string
+}
