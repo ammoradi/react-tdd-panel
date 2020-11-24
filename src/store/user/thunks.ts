@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 
 import { LOGIN_SUCCESS, LOGIN_ERROR } from 'constants/messages'
 import { IUserLoginModel } from 'models/user'
-import { encodeString } from 'libs/utils'
+import { decodeString } from 'libs/utils'
 
 import { IState } from '../types'
 import { login, logout } from './actions'
@@ -20,8 +20,8 @@ export const loginAction = (data: IUserLoginModel): any => (
       )
       if (desiredUserIndex === -1) return reject(LOGIN_ERROR)
 
-      const encodedPass: string = encodeString(data.password)
-      if (users[desiredUserIndex].password !== encodedPass) return reject(LOGIN_ERROR)
+      const decodedPass: string = decodeString(users[desiredUserIndex].password)
+      if (decodedPass !== data.password) return reject(LOGIN_ERROR)
 
       dispatch(login(users[desiredUserIndex].id))
       return resolve(LOGIN_SUCCESS)

@@ -8,7 +8,7 @@ import appReducer from './app/reducer'
 
 const persistConfig = {
   key: 'root',
-  keyPrefix: '',
+  keyPrefix: 'tdd-test',
   storage
 }
 

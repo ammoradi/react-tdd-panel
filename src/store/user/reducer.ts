@@ -1,6 +1,7 @@
 import isEmpty from 'lodash.isempty'
 
 import { IUserModel, IAddUserModel } from 'models/user'
+import { encodeString } from 'libs/utils'
 
 import {
   ADD_USER,
@@ -30,7 +31,11 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
       const lastUserId = state.users[state.users.length - 1].id
 
       const newUsers = [...state.users]
-      newUsers.push({ ...newUser, id: lastUserId + 1 })
+      newUsers.push({
+        ...newUser,
+        id: lastUserId + 1,
+        password: encodeString(newUser.password)
+      })
       return { ...state, users: newUsers }
     }
 

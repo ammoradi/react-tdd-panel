@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 // import PrivateRoute from 'components/PrivateRoute'
 
 import Login from './Login'
+import Register from './Register'
 
 function Navigation() {
   return (
@@ -13,6 +14,9 @@ function Navigation() {
       </Route>
       <Route restricted path="/login" exact>
         <Login />
+      </Route>
+      <Route restricted path="/register" exact>
+        <Register />
       </Route>
     </BrowserRouter>
   )
