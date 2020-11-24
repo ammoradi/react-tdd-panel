@@ -1,23 +1,26 @@
 import React from 'react'
-import { BrowserRouter, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 
-// import PrivateRoute from 'components/PrivateRoute'
+import RouteProvider from 'components/RouteProvider'
 
 import Login from './Login'
 import Register from './Register'
+import Gifs from './Gifs'
 
 function Navigation() {
   return (
     <BrowserRouter>
-      <Route restricted path="/" exact>
-        <Redirect to="/login" />
-      </Route>
-      <Route restricted path="/login" exact>
-        <Login />
-      </Route>
-      <Route restricted path="/register" exact>
-        <Register />
-      </Route>
+      <RouteProvider>
+        <Route restricted path="/login" exact>
+          <Login />
+        </Route>
+        <Route restricted path="/register" exact>
+          <Register />
+        </Route>
+        <Route path="/gifs" exact>
+          <Gifs />
+        </Route>
+      </RouteProvider>
     </BrowserRouter>
   )
 }
