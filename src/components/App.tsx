@@ -2,6 +2,7 @@ import React, { StrictMode, ReactNode, FC } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import styled from 'styled-components'
+import 'antd/dist/antd.css'
 
 import ThemeProvider from 'theme'
 import { persistor, store } from 'store/config'

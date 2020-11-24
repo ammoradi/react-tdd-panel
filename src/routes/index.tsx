@@ -1,18 +1,19 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 
-import PrivateRoute from 'components/PrivateRoute'
+// import PrivateRoute from 'components/PrivateRoute'
 
 import Login from './Login'
 
 function Navigation() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route restricted path="/login" exact>
-          <Login />
-        </Route>
-      </Switch>
+      <Route restricted path="/" exact>
+        <Redirect to="/login" />
+      </Route>
+      <Route restricted path="/login" exact>
+        <Login />
+      </Route>
     </BrowserRouter>
   )
 }

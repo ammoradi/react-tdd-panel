@@ -1,51 +1,85 @@
-import React from 'react'
-// import { useDispatch } from 'react-redux'
-// import { useHistory } from 'react-router-dom'
-// import isEmpty from 'lodash.isempty'
-// import { toast } from 'react-toastify'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Typography, Input, Button, message } from 'antd'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-// import { isPhoneValid } from 'libs/utils'
+import { loginAction } from 'store/user/thunks'
+import FormItem from 'components/FormItem'
 
-function Login() {
-  // const dispatch = useDispatch()
-  // const history = useHistory()
-  // const [phone, setPhone] = useState<string>('')
-  // const [loading, setLoading] = useState<boolean>(false)
+import { Container, StyledForm } from './Login.styled'
 
-  // const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setPhone(e.target.value)
-  // }
+const Login = () => {
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState<boolean>(false)
 
-  // const handleSubmit = async () => {
-  //   if (isEmpty(phone)) {
-  //     toast.error('Enter phone number.')
-  //     return
-  //   }
+  const onFinish = async (values: any) => {
+    try {
+      setLoading(true)
+      const msg: string = await dispatch(loginAction(values))
+      message.success(msg)
+      setLoading(false)
+      history.push('/gifs')
+    } catch (e) {
+      message.error(e)
+      setLoading(false)
+    }
+  }
 
-  //   if (!isPhoneValid(phone)) {
-  //     toast.error('Phone number is wrong.')
-  //     return
-  //   }
+  return (
+    <Container>
+      <StyledForm name="login" onFinish={onFinish}>
+        <Typography.Title level={2}>Log In</Typography.Title>
 
-  //   setLoading(true)
+        <FormItem
+          name="username"
+          rules={[{ required: true, message: 'Please input your Username!', min: 3 }]}
+        >
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Username"
+            size="large"
+          />
+        </FormItem>
+        <FormItem
+          name="password"
+          rules={[{ required: true, message: 'Please input your Password!', min: 4 }]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Password"
+            size="large"
+          />
+        </FormItem>
+        {/* <FormItem>
+        <FormItem name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </FormItem>
 
-  //   try {
-  //     const result: any = null // login api result
-  //     setLoading(false)
-  //     history.push('/sms', {
-  //       id: result.id,
-  //       phone
-  //     })
-  //   } catch (e) {
-  //     setLoading(false)
-  //   }
-  // }
+        <a className="login-form-forgot" href="/register">
+          Forgot password
+        </a>
+      </FormItem> */}
 
-  // const isLoginBtnDisabled =
-  //   isEmpty(phone) ||
-  //   !isPhoneValid(phone)
-
-  return <></>
+        <FormItem>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            size="large"
+            loading={loading}
+          >
+            Log in
+          </Button>
+        </FormItem>
+        <FormItem>
+          Or <Link to="/register">register now!</Link>
+        </FormItem>
+      </StyledForm>
+    </Container>
+  )
 }
 
 export default Login

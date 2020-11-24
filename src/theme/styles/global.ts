@@ -6,19 +6,19 @@ const globalStyles = css`
   * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
-    direction: rtl;
-    font-family: ${(props) => props.theme.fonts.default};
-    font-size: ${(props) => scale(props.theme.sizes.DEFAULT_textFontSize)};
-    line-height: ${(props) => scale(props.theme.sizes.DEFAULT_textLineHeight)};
+    /* direction: rtl; */
+    /* font-family: ${(props) => props.theme.fonts.default}; */
+    /* font-size: ${(props) => scale(props.theme.sizes.DEFAULT_textFontSize)}; */
+    /* line-height: ${(props) => scale(props.theme.sizes.DEFAULT_textLineHeight)}; */
   }
 
   html {
     width: 100vw;
     height: 100vh;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow-x: hidden; */
   }
 
   body {
@@ -26,7 +26,8 @@ const globalStyles = css`
     height: 100%;
     width: 100%;
     position: relative;
-    max-width: ${(props) => props.theme.sizes.appMaxWidth};
+    /* max-width: ${(props) => props.theme.sizes.appMaxWidth}; */
+    background-color: ${(props) => props.theme.colors.lightGray} !important;
   }
 
   #root {
