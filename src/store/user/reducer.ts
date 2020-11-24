@@ -1,7 +1,19 @@
-import { CLEAR_USER, IUserState, TUserActions } from './types'
+import isEmpty from 'lodash.isempty'
+
+import { IUserModel, IAddUserModel } from 'models/user'
+
+import {
+  ADD_USER,
+  EDIT_USER,
+  DELETE_USER,
+  LOG_OUT,
+  IUserState,
+  TUserActions
+} from './types'
 
 const initialState: IUserState = {
-  token: ''
+  id: 0,
+  users: [{ id: 0, username: 'guest', password: 'test', email: 'test@test.test' }]
 }
 
 function userReducer(state: IUserState, action: TUserActions): IUserState {
@@ -10,7 +22,41 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
   }
 
   switch (action.type) {
-    case CLEAR_USER:
+    case ADD_USER: {
+      const newUser: IAddUserModel = action.payload
+      if (isEmpty(newUser)) return state
+
+      const lastUserId = state.users[state.users.length - 1].id
+
+      const newUsers = [...state.users]
+      newUsers.push({ ...newUser, id: lastUserId + 1 })
+      return { ...state, users: newUsers }
+    }
+
+    case EDIT_USER: {
+      const newUser: IUserModel = action.payload
+      if (isEmpty(newUser)) return state
+
+      const desiredUserIndex = state.users.findIndex((user) => user.id === newUser.id)
+      if (desiredUserIndex === -1) return state
+
+      const newUsers = [...state.users]
+      newUsers[desiredUserIndex] = { ...newUsers[desiredUserIndex], ...newUser }
+      return { ...state, users: newUsers }
+    }
+
+    case DELETE_USER: {
+      const desiredUserIndex = state.users.findIndex(
+        (user) => user.id === action.payload
+      )
+      if (desiredUserIndex === -1) return state
+
+      const newUsers = [...state.users]
+      newUsers.splice(desiredUserIndex, 1)
+      return { ...state, users: newUsers }
+    }
+
+    case LOG_OUT:
       return initialState
 
     default:

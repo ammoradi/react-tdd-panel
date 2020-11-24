@@ -2,4 +2,4 @@
 
 import { IState } from './types'
 
-export const selectToken = (state: IState) => state.user.token
+export const selectUserId = (state: IState) => state.user.id

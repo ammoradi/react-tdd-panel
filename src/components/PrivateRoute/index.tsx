@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import isEmpty from 'lodash.isempty'
 
-import { selectToken } from 'store/selectors'
+import { selectUserId } from 'store/selectors'
 
 interface IProps {
   children: ReactNode
@@ -12,9 +11,9 @@ interface IProps {
 }
 
 const PrivateRoute = ({ children, path, ...rest }: IProps) => {
-  const token = useSelector(selectToken)
+  const userId = useSelector(selectUserId)
 
-  if (isEmpty(token)) {
+  if (!userId) {
     return (
       <Route {...rest}>
         <Redirect to="/login" />
