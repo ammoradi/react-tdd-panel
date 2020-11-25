@@ -6,6 +6,7 @@ import RouteProvider from 'components/RouteProvider'
 import Login from './Login'
 import Register from './Register'
 import Gifs from './Gifs'
+import Users from './Users'
 
 function Navigation() {
   return (
@@ -19,6 +20,9 @@ function Navigation() {
         </Route>
         <Route path="/gifs" exact>
           <Gifs />
+        </Route>
+        <Route path="/users" exact>
+          <Users />
         </Route>
       </RouteProvider>
     </BrowserRouter>
