@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   List,
   Avatar,
-  Typography,
   Button,
   Modal,
   Descriptions,
@@ -26,7 +25,6 @@ import FormItem from 'components/FormItem'
 
 import { Container, ModalAvatarContainer } from './Users.styled'
 
-const { Title } = Typography
 const { useForm } = Form
 
 interface IModalState {
@@ -150,11 +148,9 @@ function Users() {
                   <Avatar src={user.avatar} icon={<UserOutlined />} size="large" />
                 }
                 title={
-                  <Title level={3}>
-                    {user.id === currentUserId
-                      ? 'You'
-                      : getUserName(user.firstName, user.lastName, user.username)}
-                  </Title>
+                  user.id === currentUserId
+                    ? 'You'
+                    : getUserName(user.firstName, user.lastName, user.username)
                 }
               />
             </List.Item>

@@ -10,13 +10,10 @@ export const Container = styled.div`
     width: 100%;
     max-width: 480px;
 
-    h3,
     h4 {
       margin: 0;
-    }
-
-    h3 {
       line-height: 40px;
+      font-size: 22px;
     }
   }
 
