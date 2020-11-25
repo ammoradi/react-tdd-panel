@@ -10,4 +10,4 @@ export const GIPHY_SEARCH_ENDPOINT: string = 'search'
 // eslint-disable-next-line max-len
 export const GIPHY_SEARCH_URL: string = `${GIPHY_HOSTNAME}/${GIPHY_VERSION}/${GIPHY_GIFS_PREFIX}/${GIPHY_SEARCH_ENDPOINT}`
 
-export const GIPHY_SEARCH_LIMIT: number = 25
+export const GIPHY_SEARCH_LIMIT: number = 8

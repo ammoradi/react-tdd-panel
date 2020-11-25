@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { message } from 'antd'
 
 import { GIPHY_API_KEY } from 'constants/giphy'
 
@@ -15,7 +16,7 @@ export const search = (query: string, page: number) => {
       }&rating=g&lang=en`
     })
   } catch (e) {
-    console.error(e)
+    message.error('Unknown Error!')
     return []
   }
 }
