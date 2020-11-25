@@ -7,6 +7,7 @@ import Login from './Login'
 import Register from './Register'
 import Gifs from './Gifs'
 import Users from './Users'
+import Todo from './Todo'
 
 function Navigation() {
   return (
@@ -23,6 +24,9 @@ function Navigation() {
         </Route>
         <Route path="/users" exact>
           <Users />
+        </Route>
+        <Route path="/todo" exact>
+          <Todo />
         </Route>
       </RouteProvider>
     </BrowserRouter>

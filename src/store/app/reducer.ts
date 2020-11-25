@@ -1,3 +1,5 @@
+import update from 'immutability-helper'
+
 import {
   IAppState,
   TAppActions,
@@ -16,6 +18,8 @@ function userReducer(state: IAppState, action: TAppActions): IAppState {
     return initialState
   }
 
+  const { todoList } = state
+
   switch (action.type) {
     case ADD_TODO_ITEM: {
       const newItemTitle: string = action.payload
@@ -25,38 +29,50 @@ function userReducer(state: IAppState, action: TAppActions): IAppState {
         ? state.todoList[state.todoList.length - 1].id + 1
         : 1
 
-      const newItems = [...state.todoList]
-      newItems.push({ id: nextItemId, title: newItemTitle, isDone: false })
-
-      return { ...state, todoList: newItems }
+      return {
+        ...state,
+        todoList: update(todoList, {
+          $push: [{ id: nextItemId, title: newItemTitle, isDone: false }]
+        })
+      }
     }
 
     case REMOVE_TODO_ITEM: {
-      const deleteId: number = action.payload
-      if (!deleteId) return state
+      // maybe you think DONE_TODO_ITEM and REMOVE_TODO_ITEM are 99% similar,
+      // you right! but it is just template and example ;)
+      const itemId: number = action.payload
+      if (!itemId) return state
 
-      const desiredItemIndex = state.todoList.findIndex(
-        (item) => item.id === deleteId
-      )
+      const desiredItemIndex = state.todoList.findIndex((item) => item.id === itemId)
       if (desiredItemIndex === -1) return state
 
-      const newItems = [...state.todoList]
-      newItems.splice(desiredItemIndex, 1)
+      const currentItem = todoList[desiredItemIndex]
 
-      return { ...state, todoList: newItems }
+      return {
+        ...state,
+        todoList: update(todoList, {
+          [desiredItemIndex]: { isDeleted: { $set: !currentItem.isDeleted } }
+        })
+      }
     }
 
     case DONE_TODO_ITEM: {
-      const doneId: number = action.payload
-      if (!doneId) return state
+      // maybe you think DONE_TODO_ITEM and REMOVE_TODO_ITEM are 99% similar,
+      // you right! but it is just template and example ;)
+      const itemId: number = action.payload
+      if (!itemId) return state
 
-      const desiredItemIndex = state.todoList.findIndex((item) => item.id === doneId)
+      const desiredItemIndex = todoList.findIndex((item) => item.id === itemId)
       if (desiredItemIndex === -1) return state
 
-      const newItems = [...state.todoList]
-      newItems[desiredItemIndex].isDone = !state.todoList[desiredItemIndex].isDone
+      const currentItem = todoList[desiredItemIndex]
 
-      return { ...state, todoList: newItems }
+      return {
+        ...state,
+        todoList: update(todoList, {
+          [desiredItemIndex]: { isDone: { $set: !currentItem.isDone } }
+        })
+      }
     }
 
     case CLEAR_APP:

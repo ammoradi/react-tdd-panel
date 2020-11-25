@@ -1,3 +1,4 @@
+import update from 'immutability-helper'
 import isEmpty from 'lodash.isempty'
 
 import { IUserModel, IAddUserModel } from 'models/user'
@@ -23,6 +24,8 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
     return initialState
   }
 
+  const { users } = state
+
   switch (action.type) {
     case ADD_USER: {
       const newUser: IAddUserModel = action.payload
@@ -30,13 +33,18 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
 
       const lastUserId = state.users[state.users.length - 1].id
 
-      const newUsers = [...state.users]
-      newUsers.push({
-        ...newUser,
-        id: lastUserId + 1,
-        password: encodeString(newUser.password)
-      })
-      return { ...state, users: newUsers }
+      return {
+        ...state,
+        users: update(users, {
+          $push: [
+            {
+              ...newUser,
+              id: lastUserId + 1,
+              password: encodeString(newUser.password)
+            }
+          ]
+        })
+      }
     }
 
     case EDIT_USER: {
@@ -47,7 +55,8 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
       if (desiredUserIndex === -1) return state
 
       const newUsers = [...state.users]
-      newUsers[desiredUserIndex] = { ...newUsers[desiredUserIndex], ...newUser }
+      const currentUser = newUsers[desiredUserIndex]
+      newUsers.splice(desiredUserIndex, 1, { ...currentUser, ...newUser })
       return { ...state, users: newUsers }
     }
 
@@ -57,9 +66,14 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
       )
       if (desiredUserIndex === -1) return state
 
-      const newUsers = [...state.users]
-      newUsers.splice(desiredUserIndex, 1)
-      return { ...state, users: newUsers }
+      const currentUser = users[desiredUserIndex]
+
+      return {
+        ...state,
+        users: update(users, {
+          [desiredUserIndex]: { isDeleted: { $set: !currentUser.isDeleted } }
+        })
+      }
     }
 
     case LOG_IN:
