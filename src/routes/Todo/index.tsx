@@ -90,6 +90,7 @@ function Todo() {
             onChange={handleChange}
             value={newItemTitle}
             onSearch={handleSubmit}
+            autoFocus
           />
         )}
 
