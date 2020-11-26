@@ -13,4 +13,9 @@ export const UserInfo = styled.div`
     margin-bottom: 24px;
     color: ${(props) => props.theme.colors.white};
   }
+
+  .ant-avatar.ant-avatar-icon {
+    display: block;
+    margin: auto;
+  }
 `

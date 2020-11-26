@@ -56,8 +56,14 @@ function SideBar() {
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
       <UserInfo onClick={goToProfile}>
         <Tooltip title="Click to edit your profile" placement="right">
-          <Avatar src={currentUser?.avatar} icon={<UserOutlined />} size={100} />
-          <Typography.Title level={4}>{currentUser?.username}</Typography.Title>
+          <Avatar
+            src={currentUser?.avatar}
+            icon={<UserOutlined />}
+            size={collapsed ? 32 : 100}
+          />
+          <Typography.Title level={4}>
+            {collapsed ? '' : currentUser?.username}
+          </Typography.Title>
         </Tooltip>
       </UserInfo>
       <Menu
