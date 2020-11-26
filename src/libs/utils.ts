@@ -52,3 +52,9 @@ export const decodeString = (str: string): string => {
 
   return result
 }
+
+export const getBase64 = (img: Blob, callback: (url: any) => void) => {
+  const reader = new FileReader()
+  reader.addEventListener('load', () => callback(reader.result))
+  reader.readAsDataURL(img)
+}

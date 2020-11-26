@@ -48,6 +48,11 @@ export const Routes: TRoutes = {
     key: 'todo',
     title: 'Todo List',
     isPrivate: true
+  },
+  '/profile': {
+    key: 'profile',
+    title: 'Profile',
+    isPrivate: true
   }
 }
 

@@ -1,7 +1,16 @@
 import styled from 'styled-components'
 
-export const Logo = styled.div`
-  height: 32px;
-  margin: 16px;
-  background: rgba(255, 255, 255, 0.3);
+export const UserInfo = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+  cursor: pointer;
+
+  h4 {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    color: ${(props) => props.theme.colors.white};
+  }
 `
