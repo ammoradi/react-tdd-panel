@@ -33,7 +33,6 @@ export const loginAction = (data: IUserLoginModel): any => (
 export const logoutAction = (): any => (dispatch: Dispatch) =>
   new Promise(async (resolve) => {
     try {
-      // dispatch(clearApp())
       dispatch(logout())
       return resolve('resolved')
     } catch (_) {

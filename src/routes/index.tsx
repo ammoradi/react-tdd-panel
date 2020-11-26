@@ -11,12 +11,12 @@ import Todo from './Todo'
 
 function Navigation() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <RouteProvider>
-        <Route restricted path="/login" exact>
+        <Route path="/login" exact>
           <Login />
         </Route>
-        <Route restricted path="/register" exact>
+        <Route path="/register" exact>
           <Register />
         </Route>
         <Route path="/gifs" exact>

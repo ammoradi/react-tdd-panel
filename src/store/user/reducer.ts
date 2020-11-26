@@ -80,7 +80,7 @@ function userReducer(state: IUserState, action: TUserActions): IUserState {
       return { ...state, id: action.payload || 0 }
 
     case LOG_OUT:
-      return initialState
+      return { ...state, id: 0 }
 
     default:
       return state

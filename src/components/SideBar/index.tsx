@@ -40,7 +40,11 @@ function SideBar() {
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
       <Logo />
-      <Menu theme="dark" defaultSelectedKeys={['/gifs']} mode="inline">
+      <Menu
+        theme="dark"
+        defaultSelectedKeys={[history.location.pathname]}
+        mode="inline"
+      >
         {privateRoutes.map((route) => (
           <Menu.Item
             key={route.key}
