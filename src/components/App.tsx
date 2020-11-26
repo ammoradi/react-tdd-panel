@@ -6,9 +6,6 @@ import 'antd/dist/antd.css'
 
 import ThemeProvider from 'theme'
 import { persistor, store } from 'store/config'
-import ToastProvider from './Toast'
-
-import Loading from './Loading'
 
 const Container = styled.div`
   width: 100%;
@@ -25,11 +22,7 @@ const App: FC<IProps> = ({ children }) => {
       <PersistGate persistor={persistor}>
         <Provider store={store}>
           <ThemeProvider>
-            <Loading />
-            <Container>
-              <ToastProvider />
-              {children}
-            </Container>
+            <Container>{children}</Container>
           </ThemeProvider>
         </Provider>
       </PersistGate>

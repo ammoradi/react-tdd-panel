@@ -23,20 +23,15 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.1",
-    "react-ripples": "^2.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "react-spinners": "^0.9.0",
-    "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "styled-components": "^5.2.0",
     "styled-normalize": "^8.0.7",
-    "typescript": "~3.7.2",
-    "use-debounce": "^5.1.0",
-    "use-timeout": "^1.1.0"
+    "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
