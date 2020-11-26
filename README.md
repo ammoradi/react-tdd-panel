@@ -1,6 +1,6 @@
-# Tdd Test Admin Panel
+# Tdd(Interview) Test Admin Panel
 
-This project includes this features and pages:
+This project is based on [star-pwa](https://github.com/ammoradi/cra-template-star-pwa) includes this features and pages:
 
 1. Login & Register Page
 
