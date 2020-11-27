@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Typography, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
+import { IUserLoginModel } from 'models/user'
 import { loginAction } from 'store/user/thunks'
 import FormItem from 'components/FormItem'
 
@@ -14,7 +15,7 @@ const Login = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState<boolean>(false)
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: IUserLoginModel | any) => {
     try {
       setLoading(true)
       const msg: string = await dispatch(loginAction(values))
